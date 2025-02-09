@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        // Filter unique array members
+        function unique(arr) {
+            let res = Array.from(new Set(arr));
+            return res;
+        }
+        let values = ["Hare", "Krishna", "Hare", "Krishna",
+            "Krishna", "Krishna", "Hare", "Hare", ":-O"
+        ];
+        alert(unique(values));
+
+        //Filter anagrams
+        function aclean(arr) {
+            let seen = new Set();
+            let result = [];
+            for (let word of arr) {
+                let sortedWord = word.toLowerCase().split('').sort().join('');
+                if (!seen.has(sortedWord)) {
+                    result.push(word);
+                    seen.add(sortedWord);
+                }
+            }
+            return result;
+        }
+        let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+        alert(aclean(arr));
+
+        // Iterable case
+        let map = new Map();
+        map.set("name", "John");
+        let keys = Array.from(map.keys());
+        keys.push("more");
+        alert(keys);
+    </script>
+</body>
+
+</html>

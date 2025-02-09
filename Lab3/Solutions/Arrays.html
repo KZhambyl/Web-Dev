@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        // Array operations.
+        let styles = ['Jazz', 'Blues'];
+        styles.push('Rock-n-Roll');
+        styles[Math.floor(styles.length / 2)] = 'Classics';
+        alert(styles.shift());
+        styles.unshift('Rap', 'Reggae');
+        alert(styles);
+
+        // Sum input numbers
+        function sumInput() {
+            let arr = [];
+            while (true) {
+                let input = prompt("Enter numeric value");
+                if (!isFinite(input) || input === null || input === "") break;
+                else arr.push(+input);
+            }
+            let sum = 0;
+            for (let number of arr) {
+                sum += number;
+            }
+            return sum;
+        }
+        alert(sumInput());
+
+        // A maximal subarray
+        function getMaxSubSum(arr) {
+            let maxSum = 0;
+            let currentSum = 0;
+            for (let num of arr) {
+                currentSum += num;
+                if (currentSum < 0) {
+                    currentSum = 0;
+                }
+                maxSum = Math.max(maxSum, currentSum);
+            }
+            return maxSum;
+        }
+        alert(getMaxSubSum([-1, 2, 3, -9]));
+        alert(getMaxSubSum([2, -1, 2, 3, -9]));
+        alert(getMaxSubSum([-1, 2, 3, -9, 11]));
+        alert(getMaxSubSum([-2, -1, 1, 2]));
+        alert(getMaxSubSum([100, -9, 2, -3, 5]));
+        alert(getMaxSubSum([1, 2, 3]));
+
+    </script>
+</body>
+
+</html>
