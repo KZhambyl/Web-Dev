@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        // Translate border-left-width to borderLeftWidth
+        function camelize(str) {
+            let words = str.split('-');
+            for (let i = 1; i < words.length; i++) {
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+            }
+            return words.join('');
+        }
+        alert(camelize('my-long-word'));
+
+        // Filter range
+        function filterRange(arr, a, b) {
+            return arr.filter(item => a <= item && item <= b);
+        }
+
+        let arr = [5, 3, 8, 1];
+        let filtered = filterRange(arr, 1, 4);
+        alert(filtered);
+        alert(arr);
+
+        // Filter range "in place"
+        function filterRangeInPlace(arr, a, b) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < a || arr[i] > b) {
+                    arr.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        arr = [5, 3, 8, 1];
+        filterRangeInPlace(arr, 1, 4);
+        alert(arr);
+
+        // Sort in decreasing order
+        arr = [5, 2, 1, -10, 8];
+        arr.sort((a, b) => b - a);
+        alert(arr);
+
+        // Copy and sort array
+        function copySorted(arr) {
+            let cop = arr.slice().sort();
+            return cop;
+        }
+        arr = ["HTML", "JavaScript", "CSS"];
+        let sorted = copySorted(arr);
+        alert(sorted);
+        alert(arr);
+
+        // Create an extendable calculator
+        function Calculator() {
+            this.methods = {
+                "-": (a, b) => a - b,
+                "+": (a, b) => a + b
+            };
+            this.calculate = function (str) {
+                let els = str.split(' '),
+                    a = +els[0],
+                    op = els[1],
+                    b = +els[2];
+
+                if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+                    return NaN;
+                }
+
+                return this.methods[op](a, b);
+            };
+
+            this.addMethod = function (name, func) {
+                this.methods[name] = func;
+            };
+        }
+
+        let powerCalc = new Calculator;
+        powerCalc.addMethod("*", (a, b) => a * b);
+        powerCalc.addMethod("/", (a, b) => a / b);
+        powerCalc.addMethod("**", (a, b) => a ** b);
+        let result = powerCalc.calculate("2 ** 3");
+        alert(result);
+
+        // Map to names
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 28 };
+
+        let users = [john, pete, mary];
+        let names = users.map(item => item.name);
+        alert(names);
+
+        // Map to objects
+        john = { name: "John", surname: "Smith", id: 1 };
+        pete = { name: "Pete", surname: "Hunt", id: 2 };
+        mary = { name: "Mary", surname: "Key", id: 3 };
+
+        users = [john, pete, mary];
+
+        let usersMapped = users.map(user => ({
+            fullName: `${user.name} ${user.surname}`,
+            id: user.id
+        }));
+
+        alert(usersMapped[0].id);
+        alert(usersMapped[0].fullName);
+
+        // Sort users by age
+        function sortByAge(arr) {
+            arr.sort((a, b) => a.age - b.age);
+        }
+        john = { name: "John", age: 25 };
+        pete = { name: "Pete", age: 30 };
+        mary = { name: "Mary", age: 28 };
+        arr = [pete, john, mary];
+        sortByAge(arr);
+
+        for (let people of arr) alert(people.name);
+
+        // Shuffle an array
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        arr = [1, 2, 3];
+        shuffle(arr);
+        alert(arr);
+        shuffle(arr);
+        alert(arr);
+        shuffle(arr);
+        alert(arr);
+
+        // Get average age
+        function getAverageAge(users) {
+            let totalAge = users.reduce((sum, user) => sum + user.age, 0);
+            return totalAge / users.length;
+        }
+        john = { name: "John", age: 25 };
+        pete = { name: "Pete", age: 30 };
+        mary = { name: "Mary", age: 29 };
+        arr = [john, pete, mary];
+        alert(getAverageAge(arr));
+
+        // Filter unique array members
+        function unique(arr) {
+            let res = [];
+            for (let el of arr) {
+                if (res.includes(el)) continue;
+                res.push(el);
+            }
+            return res;
+        }
+
+        let strings = ["Hare", "Krishna", "Hare", "Krishna",
+            "Krishna", "Krishna", "Hare", "Hare", ":-O"
+        ];
+        alert(unique(strings));
+
+        // Create keyed object from array
+        function groupById(arr) {
+            return arr.reduce((acc, user) => {
+                acc[user.id] = user;
+                return acc;
+            }, {});
+        }
+        users = [
+            { id: 'john', name: "John Smith", age: 20 },
+            { id: 'ann', name: "Ann Smith", age: 24 },
+            { id: 'pete', name: "Pete Peterson", age: 31 },
+        ];
+        let usersById = groupById(users);
+
+        // 
+    </script>
+</body>
+
+</html>
