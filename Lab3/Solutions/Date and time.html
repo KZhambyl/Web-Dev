@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        // Create a date
+        let date = new Date(2012, 1, 20, 3, 12);
+        alert(date);
+
+        // Show a weekday
+        function getWeekDay(date) {
+            let days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+            return days[date.getDay()];
+        }
+        date = new Date(2014, 0, 3);
+        alert(getWeekDay(date));
+
+        // European weekday
+        function getLocalDay(date) {
+            let day = date.getDay();
+            if (day == 0) day = 7;
+            return day;
+        }
+        date = new Date(2012, 0, 3);
+        alert(getLocalDay(date));
+
+        // Which day of month was many days ago?
+        function getDateAgo(date, days) {
+            let res = new Date(date);
+            res.setDate(res.getDate() - days);
+            return res.getDate();
+        }
+
+        date = new Date(2015, 0, 2);
+        alert(getDateAgo(date, 1));
+        alert(getDateAgo(date, 2));
+        alert(getDateAgo(date, 365));
+
+        // Last day of Month
+        function getLastDayOfMonth(year, month) {
+            let date = new Date(year, month + 1, 0);
+            return date.getDate();
+        }
+        alert(getLastDayOfMonth(2012, 0));
+        alert(getLastDayOfMonth(2012, 1));
+        alert(getLastDayOfMonth(2013, 1));
+
+        // How many seconds have passed today ?
+        function getSecondsToday() {
+            let currentTime = new Date();
+            let today = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate());
+            let diff = currentTime - today;
+            return Math.round(diff / 1000);
+        }
+        alert(getSecondsToday());
+
+        // How many seconds till tomorrow?
+        function getSecondsToTomorrow() {
+            let currentTime = new Date();
+            let hour = currentTime.getHours();
+            let minutes = currentTime.getMinutes();
+            let seconds = currentTime.getSeconds();
+            let totalSecondsToday = (hour * 60 + minutes) * 60 + seconds;
+            let totalSecondsInADay = 86400;
+            return totalSecondsInADay - totalSecondsToday;
+        }
+        alert(getSecondsToTomorrow());
+
+        // Format the relative date
+        function formatDate(date) {
+            let minutes = date.getMinutes();
+            let hour = date.getHours();
+            let dayOfMonth = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            let diffMs = new Date() - date;
+            let diffSec = Math.round(diffMs / 1000);
+            let diffMin = diffSec / 60;
+            let diffHour = diffMin / 60;
+
+            year = year.toString().slice(-2);
+            month = month < 10 ? '0' + month : month;
+            dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
+            hour = hour < 10 ? '0' + hour : hour;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            if (diffSec < 1) {
+                return 'right now';
+            } else if (diffMin < 1) {
+                return `${diffSec} sec. ago`
+            } else if (diffHour < 1) {
+                return `${diffMin} min. ago`
+            } else {
+                return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
+            }
+        }
+
+        alert(formatDate(new Date(new Date - 1)));
+        alert(formatDate(new Date(new Date - 30 * 1000)));
+        alert(formatDate(new Date(new Date - 5 * 60 * 1000)));
+        alert(formatDate(new Date(new Date - 86400 * 1000)));
+    </script>
+</body>
+
+</html>

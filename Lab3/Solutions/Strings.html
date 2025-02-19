@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        // Uppercase the first character
+        function ucFirst(str) {
+            if (str.length == 0) return str;
+            return str[0].toUpperCase() + str.slice(1);
+        }
+        alert(ucFirst("john"));
+
+        // Check for spam
+        function checkSpam(msg) {
+            return msg.toLowerCase().includes('xxx') || msg.toLowerCase().includes('viagra');
+        }
+        alert(checkSpam('buy ViAgRA now'));
+        alert(checkSpam('free xxxxx'));
+        alert(checkSpam("innocent rabbit"));
+
+        // Truncate the text
+        function truncate(str, maxlength) {
+            let l = str.length;
+            if(l<=maxlength) return str;
+            return str.substr(0,19)+"…"
+        }
+        alert(truncate("What I'd like to tell on this topic is:", 20));
+        alert(truncate("Hi everyone!", 20));      
+        
+        // Extract the money
+        function extractCurrencyValue(str) {
+            return +str.slice(1);
+        }
+        alert( extractCurrencyValue('$120') === 120 );
+
+    </script>
+</body>
+
+</html>

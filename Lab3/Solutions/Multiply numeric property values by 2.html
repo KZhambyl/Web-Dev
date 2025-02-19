@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        function multiplyNumeric(obj) {
+            for(let key in obj) {
+                if(typeof obj[key]=="number") obj[key]*=2;
+            }
+        }
+        function outputObj(obj) {
+            for(let key in obj) {
+                alert(`${key}: ${obj[key]}`);
+            }
+        }
+
+        // before the call
+        let menu = {
+            width: 200,
+            height: 300,
+            title: "My menu"
+        };
+
+        multiplyNumeric(menu);
+
+        // after the call
+        outputObj(menu);
+    </script>
+</body>
+
+</html>
