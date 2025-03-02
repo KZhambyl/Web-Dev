@@ -1,0 +1,72 @@
+.container {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.albums {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.album {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.album a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.album a:hover {
+    text-decoration: underline;
+}
+
+.album button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.album button:hover {
+    background-color: #c0392b;
+}
+
+.container a[routerLink] {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.container a[routerLink]:hover {
+    background-color: #34495e;
+}
