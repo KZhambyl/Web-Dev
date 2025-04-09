@@ -1,0 +1,8 @@
+<h3>Vacancies for Company</h3>
+<ul>
+  <li *ngFor="let vacancy of vacancies">
+    <strong>{{ vacancy.name }}</strong> — ${{ vacancy.salary }}
+    <p>{{ vacancy.description }}</p>
+    <button (click)="deleteVacancy(vacancy.id)">Delete</button>
+  </li>
+</ul>

@@ -8,6 +8,9 @@ urlpatterns = [
     path('vacancies/', views.vacancies, name='vacancies'),
     path('vacancies/<int:id>/', views.vacancy_detail, name='vacancy_detail'),
     path('vacancies/top_ten/', views.top_ten_vacancies, name='top_ten_vacancies'),
+    path('company_post/', views.company_post.as_view(), name = 'company_post'),
+    path('vacancy_post/', views.vacancy_post.as_view(), name = 'vacancy_post'),
+
 ]
 
 # /api/companies - List of all Companies

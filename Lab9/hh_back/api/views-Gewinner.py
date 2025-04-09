@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from .models import Company, Vacancy, Review
+from .models import Company, Vacancy
 from django.forms.models import model_to_dict
 from rest_framework.views import APIView
 # Create your views here.
@@ -42,6 +42,13 @@ class company_post(APIView):
             address = request.data['address']
         )
         return JsonResponse(model_to_dict(new_company))
+    
+    # Using serializer
+    # def post(self, request):
+    #     serializer = CompanySerializer(request.data)
+    #     serializer.is_valid()
+    #     serializer.save()
+    #     return Response({'new_company': serializer.data})
 
 class vacancy_post(APIView):
     def post(self, request):
@@ -52,6 +59,12 @@ class vacancy_post(APIView):
             company = request.data['company'],
         )
         return JsonResponse(model_to_dict(new_vacancy))
+    
+    # def post(self, request):
+    #     serializer = VacancySerializer(request.data)
+    #     serializer.is_valid()
+    #     serializer.save()
+    #     return JsonResponse(serializer.data)
 
 # /api/companies - List of all Companies
 # /api/companies/<int:id>/ - Get one Company
